@@ -1,10 +1,10 @@
 {
-    "name": "@xengine/scene",
-    "version": "1.0.0",
-    "repository": "https://github.com/asurance/XEngine.git",
-    "author": "asurance <784672616@qq.com>",
-    "license": "MIT",
-    "dependencies": {
-        "@xengine/math": "1.0.0"
-    }
+  "name": "@xengine/scene",
+  "version": "1.0.0",
+  "repository": "https://github.com/asurance/XEngine.git",
+  "author": "asurance <784672616@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@xengine/math": "1.0.0"
+  }
 }
