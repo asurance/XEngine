@@ -9,13 +9,23 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "dev": "cross-env TS_NODE_PROJECT=\"webpack/tsconfig.json\" webpack serve --progress --config webpack/webpack.config.ts"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "html-webpack-plugin": "^5.3.1",
     "prettier": "^2.3.1",
-    "typescript": "^4.3.2"
+    "ts-loader": "^9.2.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2",
+    "webpack": "^5.39.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }
