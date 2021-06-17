@@ -1,1 +1,0 @@
-export { XShader } from './shader'
