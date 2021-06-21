@@ -24,6 +24,10 @@ const config = {
         test: /\.(vert|frag|glsl)$/,
         type: 'asset/source',
       },
+      {
+        test: /\.(png|jpg)$/,
+        type: 'asset',
+      },
     ],
   },
   plugins: [new HtmlWebpackPlugin()],

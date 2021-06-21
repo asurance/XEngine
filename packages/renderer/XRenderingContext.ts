@@ -5,13 +5,28 @@ import { WebglConstant } from './WebglConst'
 
 export class XRenderingContext {
   private defaultProgram: WebGLProgram
-  private postionLocation: number
-  private uvLocation: number
   constructor(private gl: WebGLRenderingContext) {
     this.defaultProgram = CreateProgram(gl, defaultVert, defaultFrag)
     gl.useProgram(this.defaultProgram)
-    this.postionLocation = gl.getAttribLocation(this.defaultProgram, 'position')
-    this.uvLocation = gl.getAttribLocation(this.defaultProgram, 'uv')
+    const vertexBuffer = gl.createBuffer()
+    gl.bindBuffer(WebglConstant.ARRAY_BUFFER, vertexBuffer)
+    gl.bufferData(
+      WebglConstant.ARRAY_BUFFER,
+      Float32Array.from([
+        -1, -1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0,
+        1, 1,
+      ]),
+      WebglConstant.STATIC_DRAW,
+    )
+    const postionLocation = gl.getAttribLocation(
+      this.defaultProgram,
+      'position',
+    )
+    gl.enableVertexAttribArray(postionLocation)
+    gl.vertexAttribPointer(postionLocation, 2, WebglConstant.FLOAT, false, 0, 0)
+    const uvLocation = gl.getAttribLocation(this.defaultProgram, 'uv')
+    gl.enableVertexAttribArray(uvLocation)
+    gl.vertexAttribPointer(uvLocation, 2, WebglConstant.FLOAT, false, 0, 12 * 4)
     const texLocation = gl.getUniformLocation(this.defaultProgram, 'tex')!
     gl.uniform1i(texLocation, 0)
   }
@@ -51,10 +66,8 @@ export class XRenderingContext {
   disposeTexture(texture: WebGLTexture): void {
     this.gl.deleteTexture(texture)
   }
-  render(texture: WebGLTexture, position: Float32List, uv: Float32List): void {
+  render(texture: WebGLTexture): void {
     this.gl.bindTexture(WebglConstant.TEXTURE_2D, texture)
-    this.gl.vertexAttrib2fv(this.postionLocation, position)
-    this.gl.vertexAttrib2fv(this.uvLocation, uv)
     this.gl.drawArrays(WebglConstant.TRIANGLES, 0, 6)
   }
   dispose(): void {

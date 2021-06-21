@@ -13,4 +13,14 @@ declare module '*.glsl' {
   export default context
 }
 
+declare module '*.png' {
+  const context: string
+  export default context
+}
+
+declare module '*.jpg' {
+  const context: string
+  export default context
+}
+
 declare const MODE: 'debug' | 'release'
