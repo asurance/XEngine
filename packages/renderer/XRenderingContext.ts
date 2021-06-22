@@ -1,6 +1,6 @@
 import defaultVert from './shader/default.vert'
 import defaultFrag from './shader/default.frag'
-import { CreateProgram } from './utils'
+import { CreateProgram } from './Util'
 import { WebglConstant } from './WebglConst'
 
 export class XRenderingContext {
