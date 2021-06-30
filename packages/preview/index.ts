@@ -1,6 +1,6 @@
 import { XRenderSystem } from '../renderer/XRenderSystem'
 import { Render } from '../scene'
-import { App } from './app'
+import { App } from './App'
 import sword from './sword.png'
 
 const canvas = document.createElement('canvas')
