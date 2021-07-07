@@ -1,1 +1,1 @@
-export { XRenderingContext } from './XRenderingContext'
+export { XRenderSystem } from './XRenderSystem'

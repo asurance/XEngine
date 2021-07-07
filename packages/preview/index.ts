@@ -1,4 +1,4 @@
-import { XRenderSystem } from '../renderer/XRenderSystem'
+import { XRenderSystem } from '../renderer'
 import { Render } from '../scene'
 import { App } from './App'
 import sword from './sword.png'
