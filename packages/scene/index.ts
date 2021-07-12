@@ -1,16 +1,16 @@
 import { XComponent } from './XComponent'
 import { XGameObject } from './XGameObject'
-import { XGroup } from './XGroup'
+import { XNode } from './XNode'
 
-export type DepArr<T> = T | Array<DepArr<T>>
+export type RecursionList<T> = null | T | Array<RecursionList<T>>
 
-export function Render(
+export function Build(
   root: XGameObject | XComponent | null,
-): DepArr<XComponent> | null {
+): RecursionList<XComponent> {
   if (root instanceof XGameObject) {
-    return Render(root.build())
-  } else if (root instanceof XGroup) {
-    return root.children.map((child) => Render(child)).filter(Boolean)
+    return Build(root.build())
+  } else if (root instanceof XNode) {
+    return root.children.map((child) => Build(child)).filter(Boolean)
   } else {
     return root
   }

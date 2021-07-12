@@ -1,0 +1,12 @@
+{
+  "name": "@xengine/web-component",
+  "version": "1.0.0",
+  "repository": "https://github.com/asurance/XEngine.git",
+  "author": "asurance <784672616@qq.com>",
+  "license": "MIT",
+  "sideEffects": "index.ts",
+  "dependencies": {
+    "@xengine/renderer": "1.0.0",
+    "@xengine/scene": "1.0.0"
+  }
+}

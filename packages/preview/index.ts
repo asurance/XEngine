@@ -1,5 +1,5 @@
-import { XRenderSystem } from '../renderer'
-import { Render } from '../scene'
+import { XRenderSystem } from '@xengine/renderer'
+import { Build } from '@xengine/scene'
 import { App } from './App'
 import sword from './sword.png'
 
@@ -14,6 +14,6 @@ const source = new Image()
 source.src = sword
 source.onload = () => {
   const texture = renderSys.createTexture(source)
-  const result = Render(new App(texture))
-  renderSys.active(result)
+  const root = Build(new App(texture))
+  renderSys.render(root)
 }

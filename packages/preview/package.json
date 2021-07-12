@@ -1,10 +1,13 @@
 {
-  "name": "@xengine/preivew",
+  "name": "@xengine/preview",
   "version": "1.0.0",
   "repository": "https://github.com/asurance/XEngine.git",
   "author": "asurance <784672616@qq.com>",
   "license": "MIT",
   "dependencies": {
-    "@xengine/math": "1.0.0"
+    "@xengine/math": "1.0.0",
+    "@xengine/renderer": "1.0.0",
+    "@xengine/scene": "1.0.0",
+    "@xengine/web-component": "1.0.0"
   }
 }
