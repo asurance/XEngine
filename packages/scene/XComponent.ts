@@ -1,1 +1,3 @@
-export class XComponent {}
+export abstract class XComponent {
+  abstract active: boolean
+}

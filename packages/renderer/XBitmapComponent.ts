@@ -1,8 +1,9 @@
-import { XComponent } from '../scene/XComponent'
+import { XComponent } from '@xengine/scene'
 
 export class XBitmapComponent extends XComponent {
-  visible = true
+  active = true
+  source: HTMLImageElement | null = null
   texture: WebGLTexture | null = null
-  width = 100
-  height = 100
+  width: number | null = null
+  height: number | null = null
 }

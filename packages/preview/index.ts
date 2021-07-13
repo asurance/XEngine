@@ -1,20 +1,20 @@
-import '@xengine/web-component'
 import { XRenderSystem } from '@xengine/renderer'
-import { Build } from '@xengine/scene'
-import { App } from './App'
 import sword from './sword.png'
+import { XNode } from '@xengine/scene'
+import { XBitmapComponent } from '@xengine/renderer'
 
 const canvas = document.createElement('canvas')
 canvas.width = window.innerWidth / 2
 canvas.height = window.innerHeight / 2
 document.body.appendChild(canvas)
 
-const gl = canvas.getContext('webgl')!
-const renderSys = new XRenderSystem(gl)
+const renderSys = new XRenderSystem(canvas)
 const source = new Image()
 source.src = sword
 source.onload = () => {
-  const texture = renderSys.createTexture(source)
-  const root = Build(new App(texture))
+  const root = new XNode()
+  const bitmap = new XBitmapComponent()
+  bitmap.source = source
+  root.children = [bitmap]
   renderSys.render(root)
 }
