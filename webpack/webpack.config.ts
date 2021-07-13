@@ -30,7 +30,11 @@ const config = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: resolve(__dirname, '../packages/preview/index.html'),
+    }),
+  ],
   resolve: {
     extensions: ['.ts', '.js'],
   },

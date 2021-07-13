@@ -1,3 +1,4 @@
+import '@xengine/web-component'
 import { XRenderSystem } from '@xengine/renderer'
 import { Build } from '@xengine/scene'
 import { App } from './App'

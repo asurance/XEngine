@@ -7,7 +7,6 @@
   "dependencies": {
     "@xengine/math": "1.0.0",
     "@xengine/renderer": "1.0.0",
-    "@xengine/scene": "1.0.0",
-    "@xengine/web-component": "1.0.0"
+    "@xengine/scene": "1.0.0"
   }
 }
