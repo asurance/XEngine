@@ -1,12 +1,11 @@
-import { IOArrayLike } from "./type"
+import { IOArrayLike } from './type'
 
 export class XVector2 {
-
   static get origin(): XVector2 {
-    return new XVector2
+    return new XVector2()
   }
 
-  constructor(public x = 0, public y = 0) { }
+  constructor(public x = 0, public y = 0) {}
 
   reset(): this {
     this.x = this.y = 0

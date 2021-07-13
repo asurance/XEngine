@@ -1,4 +1,4 @@
-import { XComponent } from "./XComponent"
+import { XComponent } from './XComponent'
 
 export class XNode extends XComponent {
   x = 0

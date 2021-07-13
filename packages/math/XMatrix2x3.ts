@@ -2,13 +2,18 @@ import { XVector2 } from './XVector2'
 import { IOArrayLike } from './type'
 
 export class XMatrix2x3 {
-
   static Identity(): XMatrix2x3 {
     return new XMatrix2x3()
   }
 
-  constructor(public a = 1, public b = 0, public c = 0,
-    public d = 1, public e = 0, public f = 0) { }
+  constructor(
+    public a = 1,
+    public b = 0,
+    public c = 0,
+    public d = 1,
+    public e = 0,
+    public f = 0,
+  ) {}
 
   reset(): this {
     this.a = this.d = 1
@@ -16,8 +21,7 @@ export class XMatrix2x3 {
     return this
   }
 
-  set(a: number, b: number, c: number,
-    d: number, e: number, f: number): this {
+  set(a: number, b: number, c: number, d: number, e: number, f: number): this {
     this.a = a
     this.b = b
     this.c = c
@@ -41,13 +45,19 @@ export class XMatrix2x3 {
     return `\
 |${this.a.toFixed(bit)},${this.b.toFixed(bit)},${this.c.toFixed(bit)}|\
 |${this.d.toFixed(bit)},${this.e.toFixed(bit)},${this.f.toFixed(bit)}|\
-|${0..toFixed(bit)},${0..toFixed(bit)},${1..toFixed(bit)}|\
-`  }
+|${(0).toFixed(bit)},${(0).toFixed(bit)},${(1).toFixed(bit)}|\
+`
+  }
 
   equal(other: XMatrix2x3): boolean {
-    return this.a === other.a && this.b === other.b
-      && this.c === other.c && this.d === other.d
-      && this.e === other.e && this.f === other.f
+    return (
+      this.a === other.a &&
+      this.b === other.b &&
+      this.c === other.c &&
+      this.d === other.d &&
+      this.e === other.e &&
+      this.f === other.f
+    )
   }
 
   copyToArray(array: IOArrayLike<number>, index = 0): this {
@@ -126,10 +136,19 @@ export class XMatrix2x3 {
     return this.multiplyWithVector2(other, z, other)
   }
 
-  multiplyWithVector2Array(other: Float32List, out: Float32List, z = 1, start = 0, length = other.length - start, outstart = 0): this {
+  multiplyWithVector2Array(
+    other: Float32List,
+    out: Float32List,
+    z = 1,
+    start = 0,
+    length = other.length - start,
+    outstart = 0,
+  ): this {
     for (let i = 0; i < length; i += 2) {
-      const x = this.a * other[start + i] + this.c * other[start + i + 1] + this.e * z
-      const y = this.b * other[start + i] + this.d * other[start + i + 1] + this.f * z
+      const x =
+        this.a * other[start + i] + this.c * other[start + i + 1] + this.e * z
+      const y =
+        this.b * other[start + i] + this.d * other[start + i + 1] + this.f * z
       out[outstart + i] = x
       out[outstart + i + 1] = y
     }
@@ -161,7 +180,7 @@ export class XMatrix2x3 {
       return false
     } else {
       const a = this.d / determinant
-      const b = - this.b / determinant
+      const b = -this.b / determinant
       const c = -this.c / determinant
       const d = this.a / determinant
       const e = (this.c * this.f - this.d * this.e) / determinant
