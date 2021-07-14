@@ -1,10 +1,12 @@
 import defaultVert from './shader/default.vert'
 import defaultFrag from './shader/default.frag'
+import { XMatrix2x3 } from '@xengine/math'
 import { CreateProgram } from './Util'
 import { WebglConstant } from './WebglConst'
 
 export class XRenderingContext {
   private defaultProgram: WebGLProgram
+  private matrxiLocation: WebGLUniformLocation
   constructor(private gl: WebGLRenderingContext) {
     this.defaultProgram = CreateProgram(gl, defaultVert, defaultFrag)
     gl.useProgram(this.defaultProgram)
@@ -29,6 +31,7 @@ export class XRenderingContext {
     gl.vertexAttribPointer(uvLocation, 2, WebglConstant.FLOAT, false, 0, 12 * 4)
     const texLocation = gl.getUniformLocation(this.defaultProgram, 'tex')!
     gl.uniform1i(texLocation, 0)
+    this.matrxiLocation = gl.getUniformLocation(this.defaultProgram, 'matrix')!
   }
   createTexture(source: TexImageSource): WebGLTexture {
     const texture = this.gl.createTexture()!
@@ -66,8 +69,11 @@ export class XRenderingContext {
   disposeTexture(texture: WebGLTexture): void {
     this.gl.deleteTexture(texture)
   }
-  render(texture: WebGLTexture): void {
+  render(texture: WebGLTexture, matrix: XMatrix2x3): void {
     this.gl.bindTexture(WebglConstant.TEXTURE_2D, texture)
+    const matrixBuffer: number[] = []
+    matrix.copyToArrayAs3x3(matrixBuffer)
+    this.gl.uniformMatrix3fv(this.matrxiLocation, false, matrixBuffer)
     this.gl.drawArrays(WebglConstant.TRIANGLES, 0, 6)
   }
   dispose(): void {
